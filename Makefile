@@ -7,6 +7,12 @@ ifeq ($(HOMEBREW), 1)
  LIB=-L/usr/local/opt/sqlite3/lib -lsqlite3
 endif
 
+ifeq ($(LINUXBREW), 1)
+ PREFIX=/home/linuxbrew/.linuxbrew/opt/sqlite3
+ INC=-I$(PREFIX)/include
+ LIB=-L$(PREFIX)/lib -lsqlite3
+endif
+
 CFLAGS ?= -g3 -Wall -std=c99 $(INC)
 
 EMACS ?= /Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_14
